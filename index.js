@@ -17,7 +17,7 @@ const managerQuestions = [
 {
     type: 'input', 
     name: 'name',
-    message: "Name: ",
+    message: "Manager Name: ",
 },    
 {
     type: 'input', 
@@ -104,12 +104,21 @@ const menu = [
             value: 'quit'
         }
     ],
-    default: ''
+    default: 'quit'
 }
 ];
 
-function init(){
-    
+async function init(){
+    await inquirer.prompt(managerQuestions).then((answers)=>{
+
+    })
+    let userOption = '';
+    do {
+        await inquirer.prompt(menu).then((answers)=>{
+            userOption = answers.option;
+            console.log(userOption);
+        })
+    } while (userOption !== 'quit')
 };
 
 init();
