@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+let teams = [];
+
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -108,17 +110,43 @@ const menu = [
 }
 ];
 
+async function engineerQuestion(teams){
+    await inquirer.prompt(enginnerQuesteions).then((engineerAnswers) =>{
+        let engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
+        teams.push(engineer);
+        prepareMenu();
+    })
+};
+
+async function internQuestion(teams){
+    await inquirer.prompt(internQuestions).then((answers) =>{
+        let intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        teams.push(intern);
+        prepareMenu();
+    })
+};
+
+async function prepareMenu(){
+    await inquirer.prompt(menu).then((answers)=>{
+            userOption = answers.option;
+            if (userOption === 'engineer'){
+                engineerQuestion(teams);
+            }
+            else if (userOption === 'intern'){
+                internQuestion(teams);
+            }
+            else if (userOption === 'quit'){
+                return;
+            }
+    })
+};
+
 async function init(){
     await inquirer.prompt(managerQuestions).then((answers)=>{
-
+        let manager = new Manager(answers.name, answers.id, answers.email);
+        teams.push(manager);
     })
-    let userOption = '';
-    do {
-        await inquirer.prompt(menu).then((answers)=>{
-            userOption = answers.option;
-            console.log(userOption);
-        })
-    } while (userOption !== 'quit')
+    prepareMenu();
 };
 
 init();
