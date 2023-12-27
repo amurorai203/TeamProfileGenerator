@@ -136,6 +136,12 @@ async function prepareMenu(){
                 internQuestion(teams);
             }
             else if (userOption === 'quit'){
+                console.log(teams);
+                console.log(render(teams));
+                fs.writeFile(outputPath, render(teams), function(err){
+                    if (err) throw err;
+                    console.log("HTML generated");
+                } )
                 return;
             }
     })
@@ -143,7 +149,7 @@ async function prepareMenu(){
 
 async function init(){
     await inquirer.prompt(managerQuestions).then((answers)=>{
-        let manager = new Manager(answers.name, answers.id, answers.email);
+        let manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber);
         teams.push(manager);
     })
     prepareMenu();
