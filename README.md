@@ -21,6 +21,10 @@ jest
     </tr>  
   </thead>
     <tr>
+      <td><h5>Input result</h5></td>
+      <td><img src="https://amurorai203.github.io/TeamProfileGenerator/img/input.jpg" width="500"></td>
+    </tr> 
+    <tr>
       <td><h5>Screen showing Generated HTML</h5></td>
       <a href:"https://amurorai203.github.io/TeamProfileGenerator/output/team.html">Team HTML</a>
       <td><img src="https://amurorai203.github.io/TeamProfileGenerator/img/team.jpg" width="500"></td>
