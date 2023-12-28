@@ -32,7 +32,7 @@ jest
   </tbody>
 </table>
 
-- [Weather Report](https://amurorai203.github.io/TeamProfileGenerator/)
+- [Team Profile Generator](https://amurorai203.github.io/TeamProfileGenerator/)
 
 
 ## Credits
