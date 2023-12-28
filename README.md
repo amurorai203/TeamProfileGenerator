@@ -1,10 +1,10 @@
 # Team Profile Generator
-Bootcamp Challenge 12 to use inquirer and jest to ask questions to build team structure HTML and use jest to run tests.
+Bootcamp Challenge 12 to use inquirer to ask questions then build team structure HTML and use jest to run tests.
 
 ## Description
 
-This is a JavaScript program to 
-1) Ask questions on Manager, Engineers and Interns information to build index.html under output folder:
+This is a JavaScript program to: 
+1) Ask questions on Manager, Engineers and Interns information to build index.html under output folder.
 2) Trigger jest to run tests to ensure information are correctly loaded into structure. 
 
 ## Installation
