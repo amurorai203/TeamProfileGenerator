@@ -1,5 +1,7 @@
 const Employee = require("../lib/Employee");
 
+// describe("Team Profile Generator", () => {
+  
 test("Can instantiate Employee instance", () => {
   const e = new Employee();
   expect(typeof(e)).toBe("object");
@@ -46,3 +48,5 @@ test("getRole() should return \"Employee\"", () => {
   const e = new Employee("Alice", 1, "test@test.com");
   expect(e.getRole()).toBe(testValue);
 });
+
+// });
