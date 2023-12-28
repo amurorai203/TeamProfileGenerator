@@ -14,7 +14,7 @@ let teams = [];
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
-
+// Define Manager questions
 const managerQuestions = [
 {
     type: 'input', 
@@ -38,7 +38,8 @@ const managerQuestions = [
 }
 ];
 
-const enginnerQuesteions = [
+// Define Enginner questions
+const enginnerQuestions = [
     {
         type: 'input', 
         name: "name",
@@ -61,6 +62,7 @@ const enginnerQuesteions = [
     }
 ];
 
+// Define Intern questions
 const internQuestions = [
     {
         type: 'input', 
@@ -84,6 +86,7 @@ const internQuestions = [
     }
 ];
 
+// Define menu questions
 const menu = [
 {
     type: 'list',
@@ -110,14 +113,16 @@ const menu = [
 }
 ];
 
+// Define function to trigger Engineering questions
 async function engineerQuestion(teams){
-    await inquirer.prompt(enginnerQuesteions).then((engineerAnswers) =>{
+    await inquirer.prompt(enginnerQuestions).then((engineerAnswers) =>{
         let engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
         teams.push(engineer);
         prepareMenu();
     })
 };
 
+// Define function to trigger Intern questions
 async function internQuestion(teams){
     await inquirer.prompt(internQuestions).then((answers) =>{
         let intern = new Intern(answers.name, answers.id, answers.email, answers.school);
@@ -126,18 +131,22 @@ async function internQuestion(teams){
     })
 };
 
+// Define te funtion to trigger the main menu
 async function prepareMenu(){
     await inquirer.prompt(menu).then((answers)=>{
             userOption = answers.option;
             if (userOption === 'engineer'){
+                // Trigger engineer questions
                 engineerQuestion(teams);
             }
             else if (userOption === 'intern'){
+                // Trigger intern questions
                 internQuestion(teams);
             }
             else if (userOption === 'quit'){
-                console.log(teams);
-                console.log(render(teams));
+                // console.log(teams);
+                // console.log(render(teams));
+                // Trigger render function and write output string to HTML
                 fs.writeFile(outputPath, render(teams), function(err){
                     if (err) throw err;
                     console.log("HTML generated");
@@ -148,10 +157,12 @@ async function prepareMenu(){
 };
 
 async function init(){
+    // First trigger Manager questions
     await inquirer.prompt(managerQuestions).then((answers)=>{
         let manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber);
         teams.push(manager);
     })
+    // Prepare main menu for Engineer and Intern questions
     prepareMenu();
 };
 
